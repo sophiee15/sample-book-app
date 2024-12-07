@@ -45,7 +45,7 @@ pipeline {
 
 def buildDockerImage(){
     echo "Building docker image.."
-    sh "dockercbuild -t sofjadimcuka/sample-book-app ."
+    sh "docker build -t sofjadimcuka/sample-book-app ."
 
     echo "Pushing image to docker registry.."
     sh "docker push sofjadimcuka/sample-book-app ."
