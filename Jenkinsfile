@@ -48,7 +48,7 @@ def buildDockerImage(){
     sh "docker build -t sofjadimcuka/sample-book-app ."
 
     echo "Pushing image to docker registry.."
-    sh "docker push sofjadimcuka/sample-book-app ."
+    sh "docker push sofjadimcuka/sample-book-app"
 }
 
 def deploy(String environment){
