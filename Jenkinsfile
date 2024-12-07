@@ -52,6 +52,8 @@ def buildDockerImgage(){
 
 def deploy(String environment){
     echo "Deployment triggered on ${environment} env.."
+    String lowercaseEnv = environment.toLowerCase()
+    sh "docker compose up sample-book-app-${lowercaseEnv}"
 }
 
 def runApiTests(String environment){
