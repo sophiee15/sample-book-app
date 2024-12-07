@@ -4,9 +4,9 @@ pipeline {
         pollSCM('*/1 * * * *')
     }
     stages {
-        stage('build-docker-image') {
+        stage('building-docker-image') {
             steps {
-                buildDockerImgage()
+                buildDockerImage()
             }
         }
         stage('deploy-dev') {
@@ -19,7 +19,7 @@ pipeline {
                 runApiTests("DEV")
             }
         }
-        stage('deploy-stg') {
+          stage('deploy-stg') {
             steps {
                 deploy("STG")
             }
@@ -40,26 +40,25 @@ pipeline {
             }
         }
     }
+    
 }
 
-def buildDockerImgage(){
-    echo "Building docker image..."
-    sh "docker build -t mtararujs/sample-book-app ."
+def buildDockerImage(){
+    echo "Building docker image.."
+    sh "dockercbuild -t sofjadimcuka/sample-book-app ."
 
     echo "Pushing image to docker registry.."
-    sh "docker push mtararujs/sample-book-app"
+    sh "docker push sofjadimcuka/sample-book-app ."
 }
 
 def deploy(String environment){
-    echo "Deployment triggered on ${environment} env.."
-    String lowercaseEnv = environment.toLowerCase()
-    sh "docker compose stop sample-book-app-${lowercaseEnv}"
-    sh "docker compose rm sample-book-app-${lowercaseEnv}"
-    sh "docker compose up -d sample-book-app-${lowercaseEnv}"
-}
+    echo "Deployment triggered on ${environment} env...."
+    String lowerCaseEnv = environment.toLowerCase()"
+    sh "docker compose up -d sample-book-app-${lowerCaseEnv}"
+    sh "docker compose rm sample-book-app-${lowerCaseEnv}"
+    sh "docker compose up -d sample-book-app-${lowerCaseEnv}"
+} 
 
 def runApiTests(String environment){
     echo "API tests triggered on ${environment} env.."
-}
-
-
+} 
