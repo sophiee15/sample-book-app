@@ -53,7 +53,7 @@ def buildDockerImage(){
 
 def deploy(String environment){
     echo "Deployment triggered on ${environment} env...."
-    String lowerCaseEnv = environment.toLowerCase()"
+    String lowerCaseEnv = environment.toLowerCase()
     sh "docker compose up -d sample-book-app-${lowerCaseEnv}"
     sh "docker compose rm sample-book-app-${lowerCaseEnv}"
     sh "docker compose up -d sample-book-app-${lowerCaseEnv}"
