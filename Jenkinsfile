@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('build-docker-image') {
             steps {
-                build()
+                buildDockerImgage()
             }
         }
         stage('deploy-dev') {
@@ -42,7 +42,7 @@ pipeline {
     }
 }
 
-def build(){
+def buildDockerImgage(){
     echo "Building docker image..."
 }
 
