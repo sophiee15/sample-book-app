@@ -1,0 +1,12 @@
+name: 'Build and Push docker image'
+description: 'Build docker image and pushing it to docker hub'
+runs:
+  using: composite
+  steps: 
+    - name: Build Docker image
+      run: docker build -t sophie14/sample-book-app .
+      shell: bash 
+    - name: Publish dockr image to docker hub
+      run: docker push sophie14/sample-book-app
+      shell: bash
+
