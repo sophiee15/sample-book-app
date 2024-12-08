@@ -1,0 +1,22 @@
+name: 'Run API tests'
+description: 'Action to run API tests against our Sample Book service'
+inputs: 
+  environment: 
+    description: 'Environment where to run Sample Book App API tests against'
+    required: true
+runs:
+  using: composite
+  steps: 
+    - name: Pull the API test image from docker hub
+      run: docker pull sophie14/js-api-tests
+      shell: bash 
+    - name: Remove API tests
+      run: docker run --network=host --rm sophie14/js-api-tests run BOOKS BOOKS_${{inputs.environment}}
+      shell: bash
+
+
+
+#def runApiTests(String environment){
+#    echo "API tests triggered on ${environment} env.."
+#    sh "docker run --network=host --rm sophie14/js-api-tests run BOOKS BOOKS_${environment}"
+#} 

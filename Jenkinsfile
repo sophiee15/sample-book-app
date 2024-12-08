@@ -61,5 +61,6 @@ def deploy(String environment){
 
 def runApiTests(String environment){
     echo "API tests triggered on ${environment} env.."
+    sh "docker pull sophie14/js-api-tests"
     sh "docker run --network=host --rm sophie14/js-api-tests run BOOKS BOOKS_${environment}"
 } 
