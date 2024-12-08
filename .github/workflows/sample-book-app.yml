@@ -9,6 +9,8 @@ jobs:
   build-docker-image:
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v4
+      - name: Checkout the code
       - name: Building docker image
         run: |
           docker build -t sophie14/sample-book-app .
