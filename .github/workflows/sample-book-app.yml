@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Checkout the code
       - name: Building docker image
-        run:|
+        run:
           docker build -t sophie14/sample-book-app .
       - run: docker push sophie14/sample-book-app
   deploy-dev:
